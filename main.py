@@ -8,6 +8,10 @@ current_word = None
 
 def choose_new_word():
     global current_word
+    global flip_timer
+
+    window.after_cancel(flip_timer)
+
     new_word = random.choice(word_translation_dict)
     new_word_french = new_word["French"]
     card_canvas.itemconfig(word_text, text=new_word_french, fill="black")
@@ -15,6 +19,7 @@ def choose_new_word():
 
     current_word = new_word
 
+    flip_timer = window.after(3000, display_english)
     card_canvas.itemconfig(card_canvas_image, image=card_front_image)
 
 def display_english():
@@ -52,6 +57,7 @@ data = pandas.read_csv("data/french_words.csv")
 word_translation_dict = data.to_dict(orient="records")
 
 # Initial Setup #
+flip_timer = window.after(3000, display_english)
 choose_new_word()
 
 window.mainloop()
