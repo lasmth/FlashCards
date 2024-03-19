@@ -11,7 +11,9 @@ card_canvas = tkinter.Canvas(width=800, height=526, background=BACKGROUND_COLOR,
 card_canvas.grid(row=0, column=0, columnspan=2)
 card_front_image = tkinter.PhotoImage(file="images/card_front.png")
 card_canvas.create_image(0,0, anchor="nw", image=card_front_image)
-card_canvas.create_text(400, 150, text="French", font=("Ariel", 40, "italic"))
+card_canvas.create_text(400, 150, text="Title", font=("Ariel", 40, "italic"))
+
+french_word = card_canvas.create_text(400, 263, text="Word", font=("Ariel", 60, "bold"))
 
 right_button_image = tkinter.PhotoImage(file="images/right.png")
 right_button = tkinter.Button(image=right_button_image, bd=0, highlightthickness=0)
